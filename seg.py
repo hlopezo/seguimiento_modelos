@@ -157,4 +157,4 @@ def cuadro_resumen(data): # cambia por base
     df_c['cosecha']=df_c['cosecha'].astype(str)
 
 
-    return [df.style.hide_index(), df_v.style.hide_index(),df_c.style.hide_index()]
+    return [df, df_v,df_c]
