@@ -82,7 +82,7 @@ def cuadro_resumen(data): # cambia por base
             X_bad_mean = np.mean(datos.pd[datos.tm == 1])
             std_good = np.std(datos.pd[(datos.tm== 0)])
             std_bad = np.std(datos.pd[(datos.tm== 1)])
-            denominador=std_good**2 - std_bad**2
+            denominator=std_good**2 - std_bad**2
             if denominator != 0:
                 t_discriminante = np.abs((X_good_mean - X_bad_mean)**2 / denominator * 2)**0.5
                 return round(t_discriminante, 4)
