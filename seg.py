@@ -78,14 +78,11 @@ def cuadro_resumen(data): # cambia por base
     #                  Creamos la Funcion Test Discriminante                            #
     #####################################################################################
     def Tdis(datos):
-        X_good = np.mean(datos.pd[datos.tm == 0])
-        std_good = np.std(datos.pd[datos.tm == 0])
-        X_bad = np.mean(datos.pd[datos.tm == 1])
-        std_bad = np.std(datos.pd[datos.tm == 1])
-        numerator = np.abs((X_good - X_bad) ** 2)
-        denominator = std_good ** 2 - std_bad ** 2
-        t_discriminante = np.sqrt(numerator / denominator * 2) if denominator != 0 else 0
-        return round(t_discriminante, 4)
+        X_good=sum(datos.pd[(datos.tm== 0)]) /len(datos.pd[(datos.tm== 0)])
+        std_good = np.std(datos.pd[(datos.tm== 0)])
+        X_bad = sum(datos.pd[(datos.tm==1)]) /len(datos.pd[(datos.tm==1)])
+        std_bad = np.std(datos.pd[(datos.tm== 1)])
+        return round(abs ((X_good-X_bad)**2/(std_good**2 - std_bad**2)*2)**0.5 ,4) 
     TD=asignador(Tdis)
     # creamos la segmentacion por deciles
     
