@@ -80,19 +80,9 @@ def cuadro_resumen(data): # cambia por base
     def Tdis(datos):
             X_good_mean = np.mean(datos.pd[datos.tm == 0])
             X_bad_mean = np.mean(datos.pd[datos.tm == 1])
-
-            if len(datos.pd[datos.tm == 0]) > 1:
-                std_good = np.std(datos.pd[datos.tm == 0])
-            else:
-                std_good = 0
-        
-            if len(datos.pd[datos.tm == 1]) > 1:
-                std_bad = np.std(datos.pd[datos.tm == 1])
-            else:
-                std_bad = 0
-        
-            denominator = std_good**2 - std_bad**2
-        
+            std_good = np.std(datos.pd[(datos.tm== 0)])
+            std_bad = np.std(datos.pd[(datos.tm== 1)])
+            denominador=std_good**2 - std_bad**2
             if denominator != 0:
                 t_discriminante = np.abs((X_good_mean - X_bad_mean)**2 / denominator * 2)**0.5
                 return round(t_discriminante, 4)
